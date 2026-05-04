@@ -1,0 +1,526 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#b91c1c" />
+    <title>Daging Pak Irfan — Halal & Segar | Banyumas</title>
+    <meta
+      name="description"
+      content="Daging Pak Irfan, Pliken Kembaran Banyumas: daging kambing & sapi segar, sate siap bakar, paket aqiqah / kekah. Pesan via WhatsApp."
+    />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                50: "#fef2f2",
+                100: "#fee2e2",
+                200: "#fecaca",
+                500: "#ef4444",
+                600: "#dc2626",
+                700: "#b91c1c",
+                800: "#991b1b",
+                900: "#7f1d1d",
+              },
+              cream: "#fffaf3",
+            },
+            fontFamily: {
+              sans: ['"Inter"', "system-ui", "-apple-system", "sans-serif"],
+              display: ['"Plus Jakarta Sans"', "system-ui", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      html { scroll-behavior: smooth; }
+      body { background: #fffaf3; padding-bottom: 0; }
+      @media (max-width: 639.98px) { body { padding-bottom: 70px; } }
+      .hero-bg {
+        background-image:
+          linear-gradient(135deg, rgba(127, 29, 29, 0.92), rgba(185, 28, 28, 0.75)),
+          url("/assets/kambing-hidup.jpg");
+        background-size: cover;
+        background-position: center;
+      }
+      .product-img {
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+        background: #f3e9d2;
+      }
+      .toast {
+        position: fixed; left: 50%; bottom: 84px; transform: translateX(-50%);
+        background: #111827; color: #f9fafb; padding: 10px 16px; border-radius: 9999px;
+        font-size: 14px; z-index: 60; box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+      }
+      @media (min-width: 640px) { .toast { bottom: 24px; } }
+      .cart-fab {
+        position: fixed; right: 18px; bottom: 90px; z-index: 50;
+        background: #b91c1c; color: white;
+        border-radius: 9999px; padding: 12px 16px;
+        box-shadow: 0 12px 30px rgba(185, 28, 28, 0.45);
+        font-weight: 700; display: inline-flex; align-items: center; gap: 8px;
+        font-size: 13px;
+      }
+      @media (max-width: 639.98px) { .cart-fab { display: none !important; } }
+      .badge {
+        display: inline-block; background: #fef2f2; color: #b91c1c;
+        font-size: 11px; font-weight: 700; letter-spacing: 0.04em;
+        padding: 3px 8px; border-radius: 9999px; text-transform: uppercase;
+      }
+      .badge-amber {
+        background: #fef3c7 !important; color: #92400e !important;
+      }
+      .badge-halal {
+        display: inline-flex; align-items: center; gap: 3px;
+        background: #dcfce7; color: #166534;
+        font-size: 10px; font-weight: 800; letter-spacing: 0.04em;
+        padding: 3px 7px; border-radius: 9999px;
+      }
+      details > summary { list-style: none; cursor: pointer; }
+      details > summary::-webkit-details-marker { display: none; }
+      details[open] .chevron { transform: rotate(180deg); }
+      .chevron { transition: transform .2s ease; }
+
+      /* Floating WhatsApp button (FAB) */
+      .wa-fab {
+        position: fixed; right: 18px; bottom: 18px; z-index: 55;
+        width: 56px; height: 56px; border-radius: 9999px;
+        background: #25D366; color: white;
+        display: inline-flex; align-items: center; justify-content: center;
+        box-shadow: 0 10px 30px rgba(37, 211, 102, 0.55);
+        animation: wa-pulse 2.4s ease-out infinite;
+      }
+      .wa-fab:hover { background: #1ebe57; }
+      .wa-fab svg { width: 30px; height: 30px; }
+      @media (max-width: 639.98px) { .wa-fab { display: none !important; } }
+      @keyframes wa-pulse {
+        0%   { box-shadow: 0 10px 30px rgba(37,211,102,0.55), 0 0 0 0 rgba(37,211,102,0.7); }
+        70%  { box-shadow: 0 10px 30px rgba(37,211,102,0.55), 0 0 0 16px rgba(37,211,102,0); }
+        100% { box-shadow: 0 10px 30px rgba(37,211,102,0.55), 0 0 0 0 rgba(37,211,102,0); }
+      }
+
+      /* Sticky bottom bar (mobile only) */
+      .mobile-bar {
+        position: fixed; left: 0; right: 0; bottom: 0; z-index: 50;
+        background: white; border-top: 1px solid #e5e7eb;
+        display: flex; gap: 8px; padding: 9px 10px;
+        box-shadow: 0 -8px 20px rgba(0,0,0,0.08);
+      }
+      @media (min-width: 640px) { .mobile-bar { display: none; } }
+      .mobile-bar a {
+        flex: 1; display: inline-flex; align-items: center; justify-content: center;
+        gap: 6px; font-weight: 700; font-size: 14px;
+        padding: 10px 8px; border-radius: 10px;
+      }
+      .mobile-bar .b-wa { background: #16a34a; color: white; }
+      .mobile-bar .b-cart { background: #b91c1c; color: white; position: relative; }
+      .mobile-bar .b-cart .cart-badge {
+        position: absolute; top: -6px; right: -4px;
+        background: #fbbf24; color: #422006;
+        font-size: 10px; font-weight: 800;
+        min-width: 18px; height: 18px; border-radius: 9999px;
+        display: inline-flex; align-items: center; justify-content: center;
+        padding: 0 4px; box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      }
+
+      /* Promo top bar */
+      .promo-bar {
+        background: linear-gradient(90deg, #b91c1c, #dc2626);
+        color: white; font-size: 13px; font-weight: 600;
+        padding: 8px 12px; text-align: center;
+      }
+      .promo-bar a { color: #fef3c7; text-decoration: underline; font-weight: 700; }
+
+      /* Stat counter section */
+      .stat-card {
+        background: white; border-radius: 12px; padding: 12px 10px;
+        text-align: center; box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+        border: 1px solid #fde68a;
+      }
+      .stat-num { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; font-weight: 800; color: #92400e; line-height: 1.1; }
+      .stat-lab { color: #6b7280; font-size: 11px; margin-top: 4px; letter-spacing: 0.02em; }
+
+      /* USP card */
+      .usp-card {
+        background: white; border-radius: 14px; padding: 18px 16px;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+        border: 1px solid #fde68a;
+        transition: transform .2s ease, box-shadow .2s ease;
+      }
+      .usp-card:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
+      .usp-icon { font-size: 36px; line-height: 1; }
+
+      /* Cara Pesan step */
+      .step-card {
+        background: white; border-radius: 14px; padding: 22px 18px;
+        border: 2px dashed #fde68a;
+        position: relative;
+      }
+      .step-num {
+        position: absolute; top: -14px; left: 18px;
+        background: #f59e0b; color: white;
+        width: 32px; height: 32px; border-radius: 9999px;
+        display: inline-flex; align-items: center; justify-content: center;
+        font-weight: 800; font-size: 15px; box-shadow: 0 4px 10px rgba(245,158,11,0.5);
+      }
+
+      /* Walking goat (background) */
+      .goat-walk {
+        position: fixed; left: -60px; bottom: 84px; z-index: 49;
+        font-size: 32px; pointer-events: none;
+        animation: goat-walk 28s linear infinite;
+        filter: drop-shadow(0 4px 6px rgba(0,0,0,0.15));
+      }
+      @media (min-width: 640px) { .goat-walk { bottom: 14px; } }
+      /* Emoji 🐐 default ngadep kiri. Saat jalan ke kanan kita scaleX(-1) biar moncongnya
+         duluan; saat jalan kembali ke kiri kita pakai scaleX(1) (default). */
+      @keyframes goat-walk {
+        0%   { transform: translateX(0) scaleX(-1); }
+        45%  { transform: translateX(calc(100vw + 60px)) scaleX(-1); }
+        46%  { transform: translateX(calc(100vw + 60px)) scaleX(1); }
+        91%  { transform: translateX(0) scaleX(1); }
+        92%  { transform: translateX(0) scaleX(-1); }
+        100% { transform: translateX(0) scaleX(-1); }
+      }
+      .goat-walk .body {
+        display: inline-block;
+        animation: goat-bob 0.45s ease-in-out infinite;
+      }
+      @keyframes goat-bob {
+        0%, 100% { transform: translateY(0) rotate(-2deg); }
+        50%      { transform: translateY(-3px) rotate(2deg); }
+      }
+
+      /* Goat burst (click pop) */
+      .goat-burst {
+        position: fixed; z-index: 70; pointer-events: none;
+        font-size: 28px;
+        animation: goat-pop 1s ease-out forwards;
+      }
+      @keyframes goat-pop {
+        0%   { transform: translate(-50%, 0) scale(0.4); opacity: 0; }
+        20%  { transform: translate(-50%, -10px) scale(1.1); opacity: 1; }
+        100% { transform: translate(calc(-50% + var(--gx, 0px)), -90px) scale(0.9); opacity: 0; }
+      }
+    </style>
+  </head>
+  <body class="font-sans text-gray-800">
+    <!-- Icon sprite (WA / IG / FB / Maps) -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+      <symbol id="i-wa" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0 0 20.885 3.488"/>
+      </symbol>
+      <symbol id="i-ig" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+      </symbol>
+      <symbol id="i-fb" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+      </symbol>
+      <symbol id="i-map" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 0 1 9.5 9 2.5 2.5 0 0 1 12 6.5 2.5 2.5 0 0 1 14.5 9 2.5 2.5 0 0 1 12 11.5z"/>
+      </symbol>
+    </svg>
+    <style>
+      .ig-grad { background: linear-gradient(45deg,#f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); }
+      .ig-grad:hover { filter: brightness(1.1); }
+      .icon { width: 1.15em; height: 1.15em; flex-shrink: 0; }
+    </style>
+
+    <!-- Promo bar (di atas header) -->
+    <div id="promoBar" class="promo-bar hidden">
+      <span id="promoText"></span>
+      <a id="promoCta" href="#" target="_blank" rel="noopener" class="ml-2">→</a>
+    </div>
+
+    <!-- Top bar -->
+    <header class="bg-white/95 backdrop-blur sticky top-0 z-40 border-b border-gray-200">
+      <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+        <a href="#top" class="flex items-center gap-2">
+          <img
+            src="/assets/pak-irfan.jpg"
+            alt="Pak Irfan"
+            class="w-10 h-10 rounded-full object-cover border-2 border-brand-700 shadow-sm"
+          />
+          <div class="leading-tight">
+            <div class="font-display font-bold text-brand-800 text-lg">Daging Pak Irfan</div>
+            <div class="text-[11px] tracking-wider text-gray-500 -mt-0.5 uppercase">Halal &amp; Segar</div>
+          </div>
+        </a>
+        <nav class="hidden md:flex items-center gap-1 text-sm font-medium text-gray-700">
+          <a class="px-3 py-1.5 rounded-md hover:bg-gray-100" href="#produk">Produk</a>
+          <a class="px-3 py-1.5 rounded-md hover:bg-gray-100" href="#galeri">Galeri</a>
+          <a class="px-3 py-1.5 rounded-md hover:bg-gray-100" href="#testimoni">Testimoni</a>
+          <a class="px-3 py-1.5 rounded-md hover:bg-gray-100" href="#faq">FAQ</a>
+          <a class="px-3 py-1.5 rounded-md hover:bg-gray-100" href="#lokasi">Lokasi</a>
+        </nav>
+        <a id="topWaBtn" class="hidden sm:inline-flex items-center gap-1.5 bg-green-600 hover:bg-green-700 text-white text-sm font-semibold px-3 py-1.5 rounded-md" href="#" target="_blank" rel="noopener">
+          <svg class="icon"><use href="#i-wa"/></svg>
+          <span id="topWaPhone">—</span>
+        </a>
+      </div>
+    </header>
+
+    <main id="top">
+      <!-- Hero -->
+      <section class="hero-bg text-white">
+        <div class="max-w-6xl mx-auto px-4 py-16 sm:py-20 lg:py-24">
+          <div class="max-w-2xl">
+            <span id="heroBadge" class="badge bg-white/20 text-white">Pliken, Kembaran, Banyumas</span>
+            <h1 id="heroHeadline" class="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold mt-3 leading-tight"></h1>
+            <p id="heroSub" class="mt-4 text-base sm:text-lg text-white/90 max-w-xl"></p>
+            <div id="heroBadges" class="mt-5 flex flex-wrap gap-2 text-sm"></div>
+            <div class="mt-7 flex flex-wrap gap-3">
+              <a href="#produk" class="bg-white text-brand-800 hover:bg-brand-50 font-semibold px-5 py-3 rounded-lg shadow">Lihat Produk</a>
+              <a id="heroWaBtn" href="#" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold px-5 py-3 rounded-lg shadow">
+                <svg class="icon"><use href="#i-wa"/></svg>
+                Pesan via WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Trust counters -->
+      <section id="stats" class="max-w-6xl mx-auto px-4 -mt-8 relative z-10">
+        <div id="statsGrid" class="grid grid-cols-2 md:grid-cols-4 gap-3"></div>
+      </section>
+
+      <!-- Mengapa Pilih Kami -->
+      <section id="mengapa" class="max-w-6xl mx-auto px-4 py-12 sm:py-16">
+        <div class="text-center mb-8">
+          <h2 class="font-display text-2xl sm:text-3xl font-bold text-gray-900">Mengapa Pilih Pak Irfan?</h2>
+          <p class="text-gray-600 mt-2">Bukan cuma jual daging — kami komitmen halal, jujur, dan amanah.</p>
+        </div>
+        <div id="uspGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+      </section>
+
+      <!-- Cara Pesan -->
+      <section id="cara-pesan" class="bg-amber-50/40 border-y border-amber-100">
+        <div class="max-w-6xl mx-auto px-4 py-12 sm:py-16">
+          <div class="text-center mb-10">
+            <h2 class="font-display text-2xl sm:text-3xl font-bold text-gray-900">Cara Pesan</h2>
+            <p class="text-gray-600 mt-2">Cuma 3 langkah — gak perlu daftar, gak perlu ribet.</p>
+          </div>
+          <div id="caraGrid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+        </div>
+      </section>
+
+      <!-- Produk -->
+      <section id="produk" class="max-w-6xl mx-auto px-4 py-12 sm:py-16">
+        <div class="flex items-end justify-between flex-wrap gap-3 mb-6">
+          <div>
+            <h2 class="font-display text-2xl sm:text-3xl font-bold text-gray-900">Produk Kami</h2>
+            <p class="text-gray-600 mt-1">Daging segar, sate siap bakar, dan paket aqiqah lengkap.</p>
+          </div>
+          <a href="#form-pesan" class="text-sm font-semibold text-brand-700 hover:underline">Lihat keranjang &amp; pesan →</a>
+        </div>
+
+        <!-- Disclaimer harga -->
+        <div class="mb-6 bg-amber-50 border border-amber-200 rounded-lg p-4 flex items-start gap-3">
+          <span class="text-2xl leading-none mt-0.5">📋</span>
+          <div class="text-sm text-amber-900 leading-snug">
+            <b>Catatan Harga:</b> harga di bawah adalah estimasi terkini. Harga daging dapat berubah sewaktu-waktu mengikuti harga pasar.
+            <a id="tanyaHargaBtn" href="#" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 mt-1 font-semibold underline text-amber-900 hover:text-amber-700">
+              <svg class="icon text-green-600"><use href="#i-wa"/></svg>
+              Tanya harga hari ini via WhatsApp →
+            </a>
+          </div>
+        </div>
+
+        <div id="kategoriTabs" class="flex flex-wrap gap-2 mb-6"></div>
+        <div id="produkGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+        <p class="mt-4 text-xs text-gray-500 italic">* Harga sewaktu-waktu dapat berubah mengikuti harga pasar. Konfirmasi terbaru via WhatsApp sebelum memesan.</p>
+      </section>
+
+      <!-- Galeri -->
+      <section id="galeri" class="bg-white border-y border-gray-100">
+        <div class="max-w-6xl mx-auto px-4 py-12 sm:py-16">
+          <h2 class="font-display text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Galeri</h2>
+          <p class="text-gray-600 mb-6">Kambing pilihan, daging segar, sate mentah siap bakar — langsung dari kandang &amp; dapur Pak Irfan.</p>
+          <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+            <img loading="lazy" class="rounded-lg aspect-square object-cover w-full" src="/assets/kambing-hidup.jpg" alt="Kambing pilihan kandang Pak Irfan" />
+            <img loading="lazy" class="rounded-lg aspect-square object-cover w-full" src="/assets/sate-mentah.jpg" alt="Sate kambing mentah siap bakar" />
+            <img loading="lazy" class="rounded-lg aspect-square object-cover w-full" src="/assets/iga-mentah.jpg" alt="Iga / tulang belakang segar" />
+            <img loading="lazy" class="rounded-lg aspect-square object-cover w-full" src="/assets/daging-mentah-1.jpg" alt="Daging segar dengan tulang" />
+            <img loading="lazy" class="rounded-lg aspect-square object-cover w-full" src="/assets/daging-mentah-2.jpg" alt="Potongan daging segar" />
+            <img loading="lazy" class="rounded-lg aspect-square object-cover w-full" src="/assets/jeroan.jpg" alt="Jeroan kambing (babat) segar" />
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimoni -->
+      <section id="testimoni" class="max-w-6xl mx-auto px-4 py-12 sm:py-16">
+        <h2 class="font-display text-2xl sm:text-3xl font-bold text-gray-900 mb-6">Apa Kata Pelanggan</h2>
+        <div id="testiGrid" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
+      </section>
+
+      <!-- Form Pesan -->
+      <section id="form-pesan" class="bg-brand-50/40 border-y border-brand-100">
+        <div class="max-w-6xl mx-auto px-4 py-12 sm:py-16">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div>
+              <h2 class="font-display text-2xl sm:text-3xl font-bold text-gray-900">Pesan Sekarang</h2>
+              <p class="text-gray-700 mt-2">Pilih produk di atas, isi data pengiriman, lalu klik <b>Kirim Pesanan via WhatsApp</b>. Pesanan otomatis terkirim ke nomor kami.</p>
+
+              <div id="cartBox" class="mt-5 bg-white rounded-xl shadow-sm p-4 border border-gray-100">
+                <h3 class="font-semibold text-gray-900 mb-2">Ringkasan Keranjang</h3>
+                <div id="cartList" class="divide-y divide-gray-100"></div>
+                <div class="flex items-center justify-between border-t border-gray-200 mt-3 pt-3 font-semibold text-gray-900">
+                  <span>Total perkiraan</span>
+                  <span id="cartTotal">Rp 0</span>
+                </div>
+                <p class="text-xs text-gray-500 mt-2">*Total perkiraan, ongkir akan dikonfirmasi via WhatsApp sesuai lokasi.</p>
+              </div>
+            </div>
+
+            <form id="orderForm" class="bg-white rounded-xl shadow-sm p-5 border border-gray-100 space-y-3">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1" for="name">Nama Pemesan</label>
+                <input id="name" name="name" required type="text" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500" placeholder="Nama lengkap" />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1" for="phone">Nomor HP / WhatsApp</label>
+                <input id="phone" name="phone" required type="tel" inputmode="tel" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500" placeholder="cth: 08123456789" />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1" for="address">Alamat Pengiriman</label>
+                <textarea id="address" name="address" required rows="2" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500" placeholder="Alamat lengkap (jalan, RT/RW, desa, kecamatan)"></textarea>
+              </div>
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-1" for="date">Tanggal Diterima</label>
+                  <input id="date" name="date" type="date" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500" />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-1" for="time">Jam (opsional)</label>
+                  <input id="time" name="time" type="time" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500" />
+                </div>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1" for="notes">Catatan (opsional)</label>
+                <textarea id="notes" name="notes" rows="2" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500" placeholder="Mis. potong dadu, tanpa lemak, request bumbu, dll."></textarea>
+              </div>
+              <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 rounded-lg flex items-center justify-center gap-2">
+                <svg viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor" aria-hidden="true"><path d="M19.11 17.34c-.27-.14-1.62-.8-1.87-.89-.25-.09-.43-.14-.61.14-.18.27-.69.89-.85 1.07-.16.18-.31.2-.58.07-.27-.14-1.14-.42-2.16-1.34-.8-.71-1.34-1.59-1.5-1.86-.16-.27-.02-.41.12-.55.13-.13.27-.31.41-.47.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.6-1.45-.83-1.99-.22-.52-.45-.45-.61-.46l-.52-.01c-.18 0-.48.07-.73.34-.25.27-.96.94-.96 2.29 0 1.35.99 2.66 1.13 2.84.14.18 1.94 2.96 4.7 4.15.66.28 1.17.45 1.57.58.66.21 1.26.18 1.74.11.53-.08 1.62-.66 1.85-1.3.23-.64.23-1.18.16-1.3-.07-.12-.25-.18-.52-.32M12.05 21.7h-.01a9.7 9.7 0 0 1-4.93-1.35l-.35-.21-3.66.96.98-3.57-.23-.37a9.7 9.7 0 0 1-1.49-5.18c0-5.36 4.36-9.72 9.72-9.72a9.66 9.66 0 0 1 6.87 2.85 9.66 9.66 0 0 1 2.85 6.87c-.01 5.36-4.37 9.72-9.75 9.72M20.52 3.49A11.66 11.66 0 0 0 12.04 0C5.49 0 .14 5.34.14 11.9c0 2.09.55 4.13 1.59 5.93L.05 24l6.32-1.65a11.85 11.85 0 0 0 5.66 1.44h.01c6.55 0 11.9-5.34 11.9-11.9 0-3.18-1.24-6.17-3.42-8.4"/></svg>
+                Kirim Pesanan via WhatsApp
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section id="faq" class="max-w-3xl mx-auto px-4 py-12 sm:py-16">
+        <h2 class="font-display text-2xl sm:text-3xl font-bold text-gray-900 mb-6">Pertanyaan yang Sering Ditanya</h2>
+        <div id="faqList" class="space-y-3"></div>
+      </section>
+
+      <!-- Lokasi -->
+      <section id="lokasi" class="bg-white border-t border-gray-100">
+        <div class="max-w-6xl mx-auto px-4 py-12 sm:py-16 grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+          <div>
+            <h2 class="font-display text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Lokasi &amp; Kontak</h2>
+            <p class="text-gray-700">
+              <span id="alamatLine"></span>
+            </p>
+            <ul class="mt-4 space-y-2 text-gray-700">
+              <li><b>Jam buka:</b> <span id="jamBuka"></span></li>
+              <li><b>Area pengiriman:</b> <span id="areaKirim"></span></li>
+              <li class="flex items-center gap-2">
+                <svg class="icon text-green-600"><use href="#i-wa"/></svg>
+                <a id="footWa" class="text-green-700 font-semibold underline" href="#" target="_blank" rel="noopener"></a>
+              </li>
+              <li class="flex items-center gap-2">
+                <svg class="icon text-pink-600"><use href="#i-ig"/></svg>
+                <a id="footIg" class="text-pink-600 font-semibold underline" href="#" target="_blank" rel="noopener">-</a>
+              </li>
+              <li class="flex items-center gap-2">
+                <svg class="icon text-blue-700"><use href="#i-fb"/></svg>
+                <a id="footFb" class="text-blue-700 font-semibold underline" href="#" target="_blank" rel="noopener">-</a>
+              </li>
+              <li class="flex items-center gap-2">
+                <svg class="icon text-brand-700"><use href="#i-map"/></svg>
+                <a id="mapsLink" class="text-brand-700 font-semibold underline" href="#" target="_blank" rel="noopener">Buka di Google Maps &rarr;</a>
+              </li>
+            </ul>
+            <div class="mt-5 flex flex-wrap gap-2">
+              <a id="bigWaBtn" href="#" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold px-4 py-2.5 rounded-lg">
+                <svg class="icon"><use href="#i-wa"/></svg>
+                WhatsApp
+              </a>
+              <a id="bigIgBtn" href="#" target="_blank" rel="noopener" class="inline-flex items-center gap-2 ig-grad text-white font-semibold px-4 py-2.5 rounded-lg shadow">
+                <svg class="icon"><use href="#i-ig"/></svg>
+                Instagram
+              </a>
+              <a id="bigFbBtn" href="#" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-blue-700 hover:bg-blue-800 text-white font-semibold px-4 py-2.5 rounded-lg">
+                <svg class="icon"><use href="#i-fb"/></svg>
+                Facebook
+              </a>
+            </div>
+          </div>
+          <div class="rounded-xl overflow-hidden border border-gray-200 shadow-sm">
+            <iframe
+              id="mapsFrame"
+              title="Peta lokasi"
+              width="100%"
+              height="320"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              src="about:blank"
+              style="border:0"
+            ></iframe>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-brand-900 text-brand-100">
+      <div class="max-w-6xl mx-auto px-4 py-8 text-sm flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between">
+        <div>© <span id="year"></span> <span id="footName">Daging Pak Irfan</span>. All rights reserved.</div>
+        <div class="text-brand-200">Halal &amp; Segar — Banyumas</div>
+      </div>
+    </footer>
+
+    <a id="cartFab" href="#form-pesan" class="cart-fab hidden">
+      <svg viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor" aria-hidden="true"><path d="M7 4h-2l-1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2h-11.42a.25.25 0 0 1-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49a1.003 1.003 0 0 0-.88-1.48h-14.06l-.94-2zM7 18a2 2 0 1 0 0 4 2 2 0 0 0 0-4M17 18a2 2 0 1 0 0 4 2 2 0 0 0 0-4"/></svg>
+      <span><span id="cartFabCount">0</span> item · <span id="cartFabTotal">Rp 0</span></span>
+    </a>
+
+    <!-- Walking goat (decorative) -->
+    <div id="goatWalk" class="goat-walk" aria-hidden="true"><span class="body">🐐</span></div>
+
+    <!-- Floating WA button (desktop) -->
+    <a id="waFab" href="#" target="_blank" rel="noopener" class="wa-fab" aria-label="Chat WhatsApp" title="Chat Pak Irfan">
+      <svg><use href="#i-wa"/></svg>
+    </a>
+
+    <!-- Sticky bottom bar (mobile) -->
+    <nav class="mobile-bar" aria-label="Aksi cepat">
+      <a id="mbWa" href="#" target="_blank" rel="noopener" class="b-wa">
+        <svg class="icon"><use href="#i-wa"/></svg>
+        Chat Pak Irfan
+      </a>
+      <a id="mbCart" href="#form-pesan" class="b-cart">
+        <svg viewBox="0 0 24 24" class="icon" fill="currentColor" aria-hidden="true"><path d="M7 4h-2l-1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2h-11.42a.25.25 0 0 1-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49a1.003 1.003 0 0 0-.88-1.48h-14.06l-.94-2zM7 18a2 2 0 1 0 0 4 2 2 0 0 0 0-4M17 18a2 2 0 1 0 0 4 2 2 0 0 0 0-4"/></svg>
+        Keranjang
+        <span id="mbCartBadge" class="cart-badge hidden">0</span>
+      </a>
+    </nav>
+
+    <div id="toast-host"></div>
+
+    <script src="data.js"></script>
+    <script src="app.js" defer></script>
+  </body>
+</html>
