@@ -10,33 +10,33 @@
   // Foto per produk (by id). Pemetaan eksplisit biar tidak tertukar.
   const PRODUCT_IMAGES = {
     // Daging segar / frozen
-    "kambing-1kg": "/assets/daging-mentah-1.jpg",
-    "kambing-5kg": "/assets/daging-mentah-2.jpg",
-    "sapi-1kg": "/assets/daging-mentah-1.jpg",
-    "sapi-5kg": "/assets/daging-mentah-2.jpg",
-    "tulang-iga": "/assets/iga-mentah.jpg",
-    "jeroan-paket": "/assets/jeroan.jpg",
+    "kambing-1kg": "assets/daging-mentah-1.jpg",
+    "kambing-5kg": "assets/daging-mentah-2.jpg",
+    "sapi-1kg": "assets/daging-mentah-1.jpg",
+    "sapi-5kg": "assets/daging-mentah-2.jpg",
+    "tulang-iga": "assets/iga-mentah.jpg",
+    "jeroan-paket": "assets/jeroan.jpg",
     // Sate & olahan siap bakar
-    "sate-kambing-5": "/assets/sate-mentah.jpg",
-    "sate-kambing-10": "/assets/sate-mentah.jpg",
-    "sate-kambing-25": "/assets/sate-mentah.jpg",
-    "sate-kambing-bumbu-25": "/assets/sate-mentah.jpg",
-    "sate-kambing-50": "/assets/sate-mentah.jpg",
-    "sate-kambing-100": "/assets/sate-mentah.jpg",
-    "sate-buntel-kambing": "/assets/sate-mentah.jpg",
-    "gulai-kambing-1kg": "/assets/daging-mentah-2.jpg",
-    "tongseng-kambing-1kg": "/assets/daging-mentah-1.jpg",
+    "sate-kambing-5": "assets/sate-mentah.jpg",
+    "sate-kambing-10": "assets/sate-mentah.jpg",
+    "sate-kambing-25": "assets/sate-mentah.jpg",
+    "sate-kambing-bumbu-25": "assets/sate-mentah.jpg",
+    "sate-kambing-50": "assets/sate-mentah.jpg",
+    "sate-kambing-100": "assets/sate-mentah.jpg",
+    "sate-buntel-kambing": "assets/sate-mentah.jpg",
+    "gulai-kambing-1kg": "assets/daging-mentah-2.jpg",
+    "tongseng-kambing-1kg": "assets/daging-mentah-1.jpg",
     // Aqiqah / kekah
-    "kekah-perempuan": "/assets/kambing-hidup.jpg",
-    "kekah-laki-standar": "/assets/kambing-hidup.jpg",
-    "kekah-laki-premium": "/assets/kambing-hidup.jpg",
+    "kekah-perempuan": "assets/kambing-hidup.jpg",
+    "kekah-laki-standar": "assets/kambing-hidup.jpg",
+    "kekah-laki-premium": "assets/kambing-hidup.jpg",
   };
 
   // Fallback jika produk baru ditambahkan tapi belum ada di mapping
   const FALLBACK_IMAGE = {
-    daging: "/assets/daging-mentah-1.jpg",
-    sate: "/assets/sate-mentah.jpg",
-    kekah: "/assets/kambing-hidup.jpg",
+    daging: "assets/daging-mentah-1.jpg",
+    sate: "assets/sate-mentah.jpg",
+    kekah: "assets/kambing-hidup.jpg",
   };
 
   const state = {
@@ -469,7 +469,7 @@
         ]),
         el("div", { class: "order-1 md:order-2" }, [
           el("img", {
-            src: "/assets/pak-irfan.jpg",
+            src: "assets/pak-irfan.jpg",
             alt: "Pak Irfan",
             class: "w-full max-w-sm mx-auto rounded-2xl shadow-lg border-4 border-white",
             loading: "lazy",
